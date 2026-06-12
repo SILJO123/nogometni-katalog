@@ -1,0 +1,162 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Statistika - Nogometni Katalog</title>
+<link href="http://fonts.googleapis.com/css?family=Raleway:400,200,500,600,700,800,300" rel="stylesheet">
+<link href="style.css" rel="stylesheet" type="text/css" media="all">
+</head>
+<body>
+
+<div id="wrapper">
+
+	<div id="header-wrapper">
+		<div id="logo">
+			<h1><a href="index.html">Nogometni Katalog</a></h1>
+			<p>Podatkovna povezanost i digitalna infrastruktura</p>
+		</div>
+	</div>
+
+	<div id="menu-wrapper">
+		<div id="menu" class="container">
+			<ul>
+				<li><a href="index.html">Naslovnica</a></li>
+				<li><a href="igraci.html">Igrači</a></li>
+				<li><a href="klubovi.html">Klubovi</a></li>
+				<li class="current_page_item"><a href="statistika.html">Statistika</a></li>
+				<li><a href="kontakt.html">Kontakt</a></li>
+			</ul>
+		</div>
+	</div>
+
+	<div id="page" class="container">
+		<div id="content">
+			<div class="title">
+				<h2>Statistika</h2>
+				<span class="byline">Podaci iz JSON-a i XML-a</span>
+			</div>
+			<div id="stat-igraci"></div>
+			<div id="stat-klubovi"></div>
+		</div>
+
+		<div id="sidebar">
+			<div class="box1">
+				<div class="title">
+					<h2>Navigacija</h2>
+				</div>
+				<ul class="style2">
+					<li><a href="index.html">Naslovnica</a></li>
+					<li><a href="igraci.html">Igrači</a></li>
+					<li><a href="klubovi.html">Klubovi</a></li>
+					<li><a href="statistika.html">Statistika</a></li>
+					<li><a href="kontakt.html">Kontakt</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+</div>
+
+<div id="copyright">
+	<p>&copy; Nogometni Katalog 2026. &nbsp;|&nbsp; Podatkovna povezanost i digitalna infrastruktura &nbsp;|&nbsp; TVZ</p>
+</div>
+
+<script>
+var jsonString = '{"igraci":[' +
+	'{"ime":"Luka","prezime":"Modrić","pozicija":"Vezni igrač","status":"aktivan"},' +
+	'{"ime":"Mateo","prezime":"Kovačić","pozicija":"Vezni igrač","status":"aktivan"},' +
+	'{"ime":"Joško","prezime":"Gvardiol","pozicija":"Branič","status":"aktivan"},' +
+	'{"ime":"Dominik","prezime":"Livaković","pozicija":"Vratar","status":"aktivan"},' +
+	'{"ime":"Ivan","prezime":"Perišić","pozicija":"Krilni napadač","status":"ozlijeđen"},' +
+	'{"ime":"Marcelo","prezime":"Brozović","pozicija":"Vezni igrač","status":"aktivan"}' +
+']}';
+
+var jsonPodaci = JSON.parse(jsonString);
+var igraci = jsonPodaci.igraci;
+
+var aktivnih = 0;
+var ozlijedenih = 0;
+for (var i = 0; i < igraci.length; i++) {
+	if (igraci[i].status == "aktivan") {
+		aktivnih++;
+	} else {
+		ozlijedenih++;
+	}
+}
+
+var pozicije = {};
+for (var i = 0; i < igraci.length; i++) {
+	var p = igraci[i].pozicija;
+	if (pozicije[p]) {
+		pozicije[p]++;
+	} else {
+		pozicije[p] = 1;
+	}
+}
+
+var htmlIgraci = "";
+
+htmlIgraci += '<div class="title"><h2>Igrači</h2><span class="byline">Podaci učitani iz JSON formata</span></div>';
+htmlIgraci += '<h3>Status igrača</h3>';
+htmlIgraci += '<table class="stat-tablica">';
+htmlIgraci += '<tr><th>Status</th><th>Broj igrača</th></tr>';
+htmlIgraci += '<tr><td>Aktivan</td><td>' + aktivnih + '</td></tr>';
+htmlIgraci += '<tr><td>Ozlijeđen</td><td>' + ozlijedenih + '</td></tr>';
+htmlIgraci += '<tr><td><strong>Ukupno</strong></td><td><strong>' + igraci.length + '</strong></td></tr>';
+htmlIgraci += '</table>';
+
+htmlIgraci += '<h3>Igrači po poziciji</h3>';
+htmlIgraci += '<table class="stat-tablica">';
+htmlIgraci += '<tr><th>Pozicija</th><th>Broj igrača</th></tr>';
+for (var poz in pozicije) {
+	htmlIgraci += '<tr><td>' + poz + '</td><td>' + pozicije[poz] + '</td></tr>';
+}
+htmlIgraci += '</table>';
+htmlIgraci += '<br>';
+
+document.getElementById("stat-igraci").innerHTML = htmlIgraci;
+
+var xmlString =
+	'<?xml version="1.0" encoding="UTF-8"?>' +
+	'<lige>' +
+		'<liga naziv="HNL">' +
+			'<klub><naziv>Dinamo Zagreb</naziv></klub>' +
+			'<klub><naziv>Hajduk Split</naziv></klub>' +
+		'</liga>' +
+		'<liga naziv="La Liga">' +
+			'<klub><naziv>Real Madrid</naziv></klub>' +
+		'</liga>' +
+		'<liga naziv="Premier League">' +
+			'<klub><naziv>Manchester City</naziv></klub>' +
+		'</liga>' +
+		'<liga naziv="Bundesliga">' +
+			'<klub><naziv>Bayern München</naziv></klub>' +
+		'</liga>' +
+	'</lige>';
+
+var parser = new DOMParser();
+var xmlDoc = parser.parseFromString(xmlString, "text/xml");
+var lige = xmlDoc.getElementsByTagName("liga");
+
+var htmlKlubovi = "";
+var ukupnoKlubova = 0;
+
+htmlKlubovi += '<div class="title"><h2>Klubovi</h2><span class="byline">Podaci učitani iz XML formata</span></div>';
+htmlKlubovi += '<h3>Klubovi po ligi</h3>';
+htmlKlubovi += '<table class="stat-tablica">';
+htmlKlubovi += '<tr><th>Liga</th><th>Broj klubova</th></tr>';
+
+for (var i = 0; i < lige.length; i++) {
+	var ligaNaziv = lige[i].getAttribute("naziv");
+	var brojKlubova = lige[i].getElementsByTagName("klub").length;
+	ukupnoKlubova += brojKlubova;
+	htmlKlubovi += '<tr><td>' + ligaNaziv + '</td><td>' + brojKlubova + '</td></tr>';
+}
+
+htmlKlubovi += '<tr><td><strong>Ukupno</strong></td><td><strong>' + ukupnoKlubova + '</strong></td></tr>';
+htmlKlubovi += '</table>';
+
+document.getElementById("stat-klubovi").innerHTML = htmlKlubovi;
+</script>
+
+</body>
+</html>

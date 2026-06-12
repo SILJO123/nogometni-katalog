@@ -1,0 +1,288 @@
+html, body {
+	height: 100%;
+}
+
+body {
+	margin: 0;
+	padding: 0;
+	background: #f0f0f0;
+	font-family: 'Raleway', sans-serif;
+	font-size: 11pt;
+	font-weight: 400;
+	color: #363636;
+}
+
+h1, h2, h3 {
+	margin: 0;
+	padding: 0;
+}
+
+p, ol, ul {
+	margin-top: 0;
+}
+
+p {
+	line-height: 190%;
+}
+
+a {
+	color: #171717;
+}
+
+a:hover {
+	text-decoration: none;
+}
+
+a img {
+	border: none;
+}
+
+img {
+	max-width: 100%;
+	margin-bottom: 1.2em;
+}
+
+hr {
+	display: none;
+}
+
+ul.style2 {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+ul.style2 li {
+	border-top: 1px solid #e5e5e5;
+	padding: 0.80em 0;
+}
+
+ul.style2 li:first-child {
+	border-top: 0;
+	padding-top: 0;
+}
+
+.title {
+	margin-bottom: 1.5em;
+}
+
+.title h2 {
+	border-top: 1px solid #1b5e20;
+	font-weight: 400;
+	font-size: 1.8em;
+	color: #1b5e20;
+	padding-top: 12px;
+	text-transform: uppercase;
+}
+
+.title .byline {
+	letter-spacing: 0.12em;
+	text-transform: uppercase;
+	font-weight: 400;
+	font-size: 0.88em;
+	color: #6f6f6f;
+}
+
+#content h3 {
+	color: #1b5e20;
+	font-size: 1.3em;
+	margin: 0 0 0.6em 0;
+	font-weight: 600;
+	text-transform: uppercase;
+	letter-spacing: 0.05em;
+}
+
+#wrapper {
+	background: #ffffff;
+}
+
+.container {
+	width: 1200px;
+	margin: 0 auto;
+}
+
+.clearfix {
+	clear: both;
+}
+
+#header-wrapper {
+	overflow: hidden;
+	padding: 2.5em 0;
+	background: #1b5e20;
+	text-align: center;
+}
+
+#logo h1 {
+	letter-spacing: 0.10em;
+	font-size: 2.5em;
+	color: #fff;
+	font-weight: 300;
+	text-transform: uppercase;
+}
+
+#logo p {
+	letter-spacing: 0.08em;
+	color: rgba(255, 255, 255, 0.65);
+	font-size: 0.82em;
+	margin: 0.3em 0 0 0;
+}
+
+#logo a {
+	text-decoration: none;
+	color: #fff;
+}
+
+#menu-wrapper {
+	background: #145214;
+}
+
+#menu {
+	overflow: hidden;
+	height: 55px;
+}
+
+#menu ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	line-height: normal;
+	text-align: center;
+}
+
+#menu li {
+	display: inline-block;
+}
+
+#menu a {
+	display: block;
+	letter-spacing: 1px;
+	padding: 0 30px;
+	text-decoration: none;
+	text-align: center;
+	text-transform: uppercase;
+	font-size: 0.78em;
+	line-height: 55px;
+	color: #fff;
+}
+
+#menu a:hover, #menu .current_page_item a {
+	background: rgba(0, 0, 0, 0.2);
+}
+
+#page {
+	position: relative;
+	overflow: hidden;
+	padding: 4em 0 5em 0;
+}
+
+#content {
+	float: left;
+	width: 790px;
+}
+
+#sidebar {
+	float: right;
+	width: 345px;
+}
+
+#sidebar .title h2 {
+	font-size: 1.3em;
+}
+
+#sidebar .box1 {
+	margin-bottom: 3em;
+}
+
+.stat-tablica {
+	width: 100%;
+	border-collapse: collapse;
+	background: white;
+	margin-bottom: 20px;
+	box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.stat-tablica th {
+	background: #1b5e20;
+	color: white;
+	padding: 10px 12px;
+	text-align: left;
+	font-weight: 600;
+}
+
+.stat-tablica td {
+	padding: 9px 12px;
+	border-bottom: 1px solid #e0e0e0;
+}
+
+.stat-tablica tr:hover {
+	background: #e8f5e9;
+}
+
+.forma-polje {
+	margin-bottom: 14px;
+}
+
+.forma-polje label {
+	display: block;
+	margin-bottom: 5px;
+	font-weight: 600;
+	font-size: 0.83em;
+	text-transform: uppercase;
+	letter-spacing: 0.08em;
+}
+
+.forma-polje input,
+.forma-polje textarea {
+	width: 100%;
+	padding: 8px;
+	border: 1px solid #ccc;
+	font-family: 'Raleway', sans-serif;
+	font-size: 0.95em;
+	box-sizing: border-box;
+}
+
+.forma-polje textarea {
+	height: 110px;
+	resize: vertical;
+}
+
+.button {
+	display: inline-block;
+	margin-top: 0.5em;
+	padding: 0.9em 2.5em;
+	background: #1b5e20;
+	text-decoration: none;
+	text-transform: uppercase;
+	font-weight: 600;
+	font-size: 0.82em;
+	color: #fff;
+	letter-spacing: 0.08em;
+	border: none;
+	cursor: pointer;
+	font-family: 'Raleway', sans-serif;
+}
+
+.button:hover {
+	background: #145214;
+}
+
+#copyright {
+	overflow: hidden;
+	padding: 2.5em 0;
+	text-align: center;
+	background: #1b5e20;
+}
+
+#copyright p {
+	letter-spacing: 0.18em;
+	text-align: center;
+	text-transform: uppercase;
+	font-size: 0.78em;
+	color: rgba(255, 255, 255, 0.65);
+	margin: 0;
+}
+
+#copyright a {
+	text-decoration: none;
+	color: rgba(255, 255, 255, 0.85);
+}

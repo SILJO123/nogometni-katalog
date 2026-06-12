@@ -1,0 +1,100 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Igrači - Nogometni Katalog</title>
+<link href="http://fonts.googleapis.com/css?family=Raleway:400,200,500,600,700,800,300" rel="stylesheet">
+<link href="style.css" rel="stylesheet" type="text/css" media="all">
+</head>
+<body>
+
+<div id="wrapper">
+
+	<div id="header-wrapper">
+		<div id="logo">
+			<h1><a href="index.html">Nogometni Katalog</a></h1>
+			<p>Podatkovna povezanost i digitalna infrastruktura</p>
+		</div>
+	</div>
+
+	<div id="menu-wrapper">
+		<div id="menu" class="container">
+			<ul>
+				<li><a href="index.html">Naslovnica</a></li>
+				<li class="current_page_item"><a href="igraci.html">Igrači</a></li>
+				<li><a href="klubovi.html">Klubovi</a></li>
+				<li><a href="statistika.html">Statistika</a></li>
+				<li><a href="kontakt.html">Kontakt</a></li>
+			</ul>
+		</div>
+	</div>
+
+	<div id="page" class="container">
+		<div id="content">
+		</div>
+
+		<div id="sidebar">
+			<div class="box1">
+				<div class="title">
+					<h2>Navigacija</h2>
+				</div>
+				<ul class="style2">
+					<li><a href="index.html">Naslovnica</a></li>
+					<li><a href="igraci.html">Igrači</a></li>
+					<li><a href="klubovi.html">Klubovi</a></li>
+					<li><a href="statistika.html">Statistika</a></li>
+					<li><a href="kontakt.html">Kontakt</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+</div>
+
+<div id="copyright">
+	<p>&copy; Nogometni Katalog 2026. &nbsp;|&nbsp; Podatkovna povezanost i digitalna infrastruktura &nbsp;|&nbsp; TVZ</p>
+</div>
+
+<script>
+var podaci = {
+	reprezentacija: "Hrvatska",
+	trener: "Zlatko Dalić",
+	fifa_rang: 12,
+	igraci: [
+		{ime: "Luka",     prezime: "Modrić",    klub: "Milan",     pozicija: "Vezni igrač",    status: "aktivan",   broj: 10, slika: "modric.jpg"},
+		{ime: "Mateo",    prezime: "Kovačić",   klub: "Manchester City", pozicija: "Vezni igrač",    status: "aktivan",   broj: 8,  slika: "kovacic.jpg"},
+		{ime: "Joško",    prezime: "Gvardiol",  klub: "Manchester City", pozicija: "Branič",         status: "aktivan",   broj: 24, slika: "gvardiol.jpg"},
+		{ime: "Dominik",  prezime: "Livaković", klub: "Dinamo Zagreb",      pozicija: "Vratar",         status: "aktivan",   broj: 1,  slika: "livakovic.jpg"},
+		{ime: "Ivan",     prezime: "Perišić",   klub: "PSV",    pozicija: "Krilni napadač", status: "ozlijeđen", broj: 4,  slika: "perisic.jpg"},
+		{ime: "Marcelo",  prezime: "Brozović",  klub: "Al-Nassr",        pozicija: "Vezni igrač",    status: "aktivan",   broj: 11, slika: "brozovic.jpg"}
+	]
+};
+
+var igraci = podaci.igraci;
+var content = document.getElementById("content");
+var html = "";
+
+html += '<div class="title">';
+html += '<h2>' + podaci.reprezentacija + '</h2>';
+html += '<span class="byline">Trener: ' + podaci.trener + ' &nbsp;&middot;&nbsp; FIFA rang: ' + podaci.fifa_rang + '</span>';
+html += '</div>';
+html += '<img src="reprezentacija.jpg">';
+
+for (var i = 0; i < igraci.length; i++) {
+	var igrac = igraci[i];
+	html += '<div class="title">';
+	html += '<h2>' + igrac.ime + ' ' + igrac.prezime + '</h2>';
+	html += '<span class="byline">' + igrac.pozicija + ' &nbsp;&middot;&nbsp; ' + igrac.klub + '</span>';
+	html += '</div>';
+	html += '<img src="' + igrac.slika + '">';
+	html += '<p>Klub: <strong>' + igrac.klub + '</strong></p>';
+	html += '<p>Pozicija: ' + igrac.pozicija + '</p>';
+	html += '<p>Broj dresa: <strong>' + igrac.broj + '</strong></p>';
+	html += '<p>Status: ' + igrac.status + '</p>';
+	html += '<br>';
+}
+
+content.innerHTML = html;
+</script>
+
+</body>
+</html>

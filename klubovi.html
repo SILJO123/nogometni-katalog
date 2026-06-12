@@ -1,0 +1,113 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Klubovi - Nogometni Katalog</title>
+<link href="http://fonts.googleapis.com/css?family=Raleway:400,200,500,600,700,800,300" rel="stylesheet">
+<link href="style.css" rel="stylesheet" type="text/css" media="all">
+</head>
+<body>
+
+<div id="wrapper">
+
+	<div id="header-wrapper">
+		<div id="logo">
+			<h1><a href="index.html">Nogometni Katalog</a></h1>
+			<p>Podatkovna povezanost i digitalna infrastruktura</p>
+		</div>
+	</div>
+
+	<div id="menu-wrapper">
+		<div id="menu" class="container">
+			<ul>
+				<li><a href="index.html">Naslovnica</a></li>
+				<li><a href="igraci.html">Igraci</a></li>
+				<li class="current_page_item"><a href="klubovi.html">Klubovi</a></li>
+				<li><a href="statistika.html">Statistika</a></li>
+				<li><a href="kontakt.html">Kontakt</a></li>
+			</ul>
+		</div>
+	</div>
+
+	<div id="page" class="container">
+		<div id="content">
+		</div>
+
+		<div id="sidebar">
+			<div class="box1">
+				<div class="title">
+					<h2>Navigacija</h2>
+				</div>
+				<ul class="style2">
+					<li><a href="index.html">Naslovnica</a></li>
+					<li><a href="igraci.html">Igraci</a></li>
+					<li><a href="klubovi.html">Klubovi</a></li>
+					<li><a href="statistika.html">Statistika</a></li>
+					<li><a href="kontakt.html">Kontakt</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+</div>
+
+<div id="copyright">
+	<p>&copy; Nogometni Katalog 2026. &nbsp;|&nbsp; Podatkovna povezanost i digitalna infrastruktura &nbsp;|&nbsp; TVZ</p>
+</div>
+
+<script>
+var xmlString =
+	'<?xml version="1.0" encoding="UTF-8"?>' +
+	'<lige>' +
+		'<liga naziv="HNL">' +
+			'<klub id="1"><naziv>Dinamo Zagreb</naziv><osnovan>1945</osnovan><stadion>Stadion Maksimir</stadion><kapacitet>35123</kapacitet><slika>dinamo.jpg</slika></klub>' +
+			'<klub id="2"><naziv>Hajduk Split</naziv><osnovan>1911</osnovan><stadion>Stadion Poljud</stadion><kapacitet>35000</kapacitet><slika>hajduk.jpg</slika></klub>' +
+		'</liga>' +
+		'<liga naziv="La Liga">' +
+			'<klub id="3"><naziv>Real Madrid</naziv><osnovan>1902</osnovan><stadion>Santiago Bernabeu</stadion><kapacitet>81044</kapacitet><slika>real_madrid.jpg</slika></klub>' +
+		'</liga>' +
+		'<liga naziv="Premier League">' +
+			'<klub id="4"><naziv>Manchester City</naziv><osnovan>1880</osnovan><stadion>Etihad Stadium</stadion><kapacitet>55017</kapacitet><slika>man_city.jpg</slika></klub>' +
+		'</liga>' +
+		'<liga naziv="Bundesliga">' +
+			'<klub id="5"><naziv>Bayern Munchen</naziv><osnovan>1900</osnovan><stadion>Allianz Arena</stadion><kapacitet>75024</kapacitet><slika>bayern.jpg</slika></klub>' +
+		'</liga>' +
+	'</lige>';
+
+var parser = new DOMParser();
+var xmlDoc = parser.parseFromString(xmlString, "text/xml");
+var lige = xmlDoc.getElementsByTagName("liga");
+var content = document.getElementById("content");
+var html = "";
+
+for (var i = 0; i < lige.length; i++) {
+	var liga = lige[i];
+	var ligaNaziv = liga.getAttribute("naziv");
+
+	html += '<div class="title">';
+	html += '<h2>' + ligaNaziv + '</h2>';
+	html += '</div>';
+
+	var klubovi = liga.getElementsByTagName("klub");
+
+	for (var j = 0; j < klubovi.length; j++) {
+		var klub = klubovi[j];
+		var naziv    = klub.getElementsByTagName("naziv")[0].textContent;
+		var osnovan  = klub.getElementsByTagName("osnovan")[0].textContent;
+		var stadion  = klub.getElementsByTagName("stadion")[0].textContent;
+		var kapacitet = klub.getElementsByTagName("kapacitet")[0].textContent;
+		var slika    = klub.getElementsByTagName("slika")[0].textContent;
+
+		html += '<h3>' + naziv + '</h3>';
+		html += '<img src="' + slika + '">';
+		html += '<p>Osnovan: <strong>' + osnovan + '.</strong></p>';
+		html += '<p>Stadion: ' + stadion + '</p>';
+		html += '<p>Kapacitet: <strong>' + kapacitet + '</strong> mjesta</p>';
+		html += '<br>';
+	}
+}
+
+content.innerHTML = html;
+</script>
+
+</body>
+</html>
